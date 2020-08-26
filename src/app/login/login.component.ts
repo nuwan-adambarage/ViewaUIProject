@@ -17,6 +17,7 @@ export class LoginComponent {
   login(form: NgForm) {
     const credentials = JSON.stringify(form.value);
     this.http.post("https://localhost:44344/api/token/login", credentials, {
+      //let postUrl: string = `token/login`
       headers: new HttpHeaders({
         "Content-Type": "application/json"
       })
@@ -26,8 +27,8 @@ export class LoginComponent {
       this.invalidLogin = false;
       this.router.navigateByUrl('/search');
     }, err => {
-      //this.invalidLogin = true;
-      console.log(err);
+      this.invalidLogin = true;
+      //console.log(err);
     });
   }
 

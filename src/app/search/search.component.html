@@ -1,1 +1,50 @@
-<p>search works!</p>
+<form [formGroup]="eventsForm">
+    <div class="row">
+        <div class="form-group row">
+            <label for="fromDate" class="control-label col-md-2">From Date </label>
+            <div class="col-md-4">
+                <input type="text" formControlName="eventsFrom" name="eventsFrom" id="eventsFrom" ngModel class="form-control" appDatepicker 
+                (change)="executeFromDatePicker($event)" readonly/>
+            </div>
+            <label for="toDate" class="control-label col-md-2">To Date </label>
+            <div class="col-md-4">
+                <input type="text" formControlName="eventsTo" name="eventsTo" id="eventsTo" ngModel class="form-control" appDatepicker 
+                (change)="executeToDatePicker($event)" readonly/>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-offset-8 col-md-1">
+            <button type="submit" class="btn btn-info" (click)="searchEvents(eventsForm.value)">Search</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>campaign name</th>
+                  <th>Type</th>
+                  <th>Event date</th>
+                  <th>Device type</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let event of events">
+                  <td>{{event.campaignName}}</td>
+                  <td>{{event.eventType}}</td>
+                  <td>{{event.eventDate | date: 'dd/MM/yyyy'}}</td>
+                  <td>{{event.appDeviceType}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+
+</form>

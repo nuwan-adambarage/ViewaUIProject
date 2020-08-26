@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms'
 import { ReactiveFormsModule} from '@angular/forms'
 import { JwtModule } from "@auth0/angular-jwt";
 import { HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { SearchComponent } from './search/search.component';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from './shared/guard/auth-guard.service';
+import { DatepickerDirective } from './shared/directives/datepicker.directive';
 
 export function tokenGetter() {
   return localStorage.getItem("jwt");
@@ -21,7 +23,8 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     LoginComponent,
-    SearchComponent
+    SearchComponent,
+    DatepickerDirective
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,10 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [AuthGuard],
+  providers: [
+    AuthGuard,
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

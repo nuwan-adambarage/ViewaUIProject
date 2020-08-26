@@ -13,6 +13,10 @@ export class RepositoryService {
     return this.http.get(this.createCompleteRoute(route, this.envUrl.urlAddress));
   }
 
+  public searchData = (route: string, body) => {
+    return this.http.get(this.createCompleteRoute(route, this.envUrl.urlAddress), body);
+  }
+
   public post = (route: string, body) => {
     return this.http.post(this.createCompleteRoute(route, this.envUrl.urlAddress), body, this.generateHeaders());
   }
