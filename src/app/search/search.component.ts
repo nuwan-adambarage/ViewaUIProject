@@ -54,7 +54,7 @@ export class SearchComponent implements OnInit {
       eventsTo: eventsFormValue.eventsTo
     }
 
-    const apiUrl = "events";
+    const apiUrl = "events/search";
     this.repository.searchData(apiUrl, dateSearchParams)
       .subscribe (res => {
         this.events = res as unknown as Events[];
